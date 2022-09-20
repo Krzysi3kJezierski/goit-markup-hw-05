@@ -612,5 +612,4 @@ img {
    pointer-events: none;
    transform: scale(1);
    transition: opacity 250ms linear, visibility 250ms linear;
-
 }
