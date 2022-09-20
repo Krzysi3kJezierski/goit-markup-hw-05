@@ -160,8 +160,23 @@ img {
    margin-bottom: 50px;
 }
 
+.photo-csz {
+   position: relative;
+}
+
 .photo-csz:not(:last-child) {
    padding-right: 30px;
+}
+
+.figcaption {
+   position: absolute;
+   bottom: 0;
+   background: rgba(47, 48, 58, 0.8);
+   width: 370px;
+   height: 70px;
+   justify-content: center;
+   align-items: center;
+   color: rgba(255, 255, 255, 1);
 }
 
 .team {
@@ -292,6 +307,9 @@ img {
 
 .bluelink {
    color: var(--dark);
+   transition-property: color;
+   transition-duration: 250ms;
+   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .bluelink:visited {
@@ -300,6 +318,26 @@ img {
 
 .bluelink-active {
    color: var(--blue);
+   position: relative;
+   height: 100%;
+   padding-bottom: 60%;
+}
+
+.bluelink-active::after {
+   display: block;
+   border-bottom: 4px solid var(--blue);
+   border-radius: 2px;
+   position: absolute;
+   content: "";
+   width: 100%;
+   bottom: 0px;
+   left: 0px;
+}
+
+.bluelink:hover,
+.bluelink:focus-within {
+   border-bottom: 4px solid var(--blue);
+   padding-bottom: 50%;
 }
 
 .header-address {
@@ -307,9 +345,11 @@ img {
    font-style: normal;
    font-size: 14px;
    line-height: 1.14;
-
    text-decoration: none;
    font-weight: 500;
+   transition-property: color;
+   transition-duration: 250ms;
+   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .bluelink:hover,
@@ -338,6 +378,9 @@ img {
    border-radius: 4px;
    border: 0px;
    padding: 6px 22px;
+   transition-property: background-color, color, box-shadow;
+   transition-duration: 250ms;
+   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-banner {
@@ -378,9 +421,52 @@ img {
    gap: 30px;
 }
 
+.portfolio-element {
+   position: relative;
+   transition-property: box-shadow;
+   transition-duration: 250ms;
+   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hidden-element-container {
+   display: flex;
+   width: 100%;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   overflow: hidden;
+}
+
+.hidden-background {
+   position: absolute;
+   background: rgba(33, 150, 243, 0.9);
+   width: 100%;
+   height: 100%;
+   max-height: 294px;
+   font-size: 18px;
+   transform: translateY(300px);
+   transition: transform 250ms linear;
+}
+
+.hidden-text {
+   justify-content: center;
+   align-items: center;
+   padding: 49px 45px 49px 24px;
+   font-size: 18px;
+   line-height: 1.56;
+   color: var(--white);
+}
+
 .portfolio-projects-describe {
    border: 1px solid #eeeeee;
    flex-basis: calc((100% - 60px) / 3);
+}
+
+.portfolio-element:hover .hidden-background,
+.podrtolio-element:focus .hidden-background {
+   transform: translateY(0px);
+   transition-property: transform;
+   transition-duration: 250ms;
 }
 
 .portfolio-element:hover,
@@ -483,4 +569,48 @@ img {
    background-color: rgba(255, 255, 255, 0.1);
    margin-right: 10px;
    margin-top: 20px;
+}
+
+.backdrop {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.1);
+   opacity: 100%;
+   transition: opacity 250ms linear;
+   visibility 250ms linear;
+}
+
+.modal {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 528px;
+   min-height: 581px;
+   background-color: var(--white);
+   border-radius: 4px;
+}
+
+.close-button {
+   position: absolute;
+   top: 8px;
+   right: 8px;
+   width: 30px;
+   height: 30px;
+   background-color: var(--white);
+   border-radius: 50%;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   cursor: pointer;
+}
+
+.is-hidden {
+   opacity: 0;
+   visibility: hidden;
+   pointer-events: none;
+   transform: scale(1);
+   transition: opacity 250ms linear, visibility 250ms linear;
+
 }
