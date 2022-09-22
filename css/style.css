@@ -330,11 +330,11 @@ img {
    position: absolute;
    content: "";
    width: 100%;
-   bottom: 0px;
+   bottom: 2px;
    left: 0px;
 }
 
-.bluelink:hover,
+/*.bluelink:hover,*/
 .bluelink:focus-within {
    border-bottom: 4px solid var(--blue);
    padding-bottom: 50%;
